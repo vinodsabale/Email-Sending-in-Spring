@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Registration Successful!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+    <style>
+        body {
+            background: linear-gradient(135deg, #14532d 0%, #16a34a 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .success-card {
+            width: 100%;
+            max-width: 480px;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,.3);
+            overflow: hidden;
+        }
+        .success-header {
+            background: linear-gradient(135deg, #14532d, #16a34a);
+            color: #fff;
+            padding: 36px 32px;
+            text-align: center;
+        }
+        .checkmark {
+            width: 80px; height: 80px;
+            background: rgba(255,255,255,.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 2.5rem;
+        }
+        .card-body { background: #fff; padding: 32px; }
+        .detail-row {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: #f8fafc;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .detail-icon {
+            width: 36px; height: 36px;
+            border-radius: 8px;
+            background: #dcfce7;
+            color: #16a34a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        .detail-label { font-size: .78rem; color: #94a3b8; font-weight: 600; text-transform: uppercase; }
+        .detail-value { font-weight: 600; color: #1e293b; }
+        .email-sent-box {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .btn-back {
+            background: linear-gradient(135deg, #14532d, #16a34a);
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .btn-back:hover { opacity: .9; color: #fff; }
+    </style>
+</head>
+<body>
+<div class="success-card card mx-3">
+    <div class="success-header">
+        <div class="checkmark">✅</div>
+        <h4 style="font-weight:800;margin:0;">Registration Successful!</h4>
+        <p style="margin:8px 0 0;opacity:.85;" th:text="'Welcome, ' + ${name} + '!'">Welcome!</p>
+    </div>
+
+    <div class="card-body">
+        <p class="text-secondary text-center mb-4">
+            Your registration is complete. Here are your details:
+        </p>
+
+        <!-- Registered details -->
+        <div class="detail-row">
+            <div class="detail-icon"><i class="bi bi-person"></i></div>
+            <div>
+                <div class="detail-label">Name</div>
+                <div class="detail-value" th:text="${name}">—</div>
+            </div>
+        </div>
+
+        <div class="detail-row">
+            <div class="detail-icon"><i class="bi bi-envelope"></i></div>
+            <div>
+                <div class="detail-label">Email</div>
+                <div class="detail-value" th:text="${email}">—</div>
+            </div>
+        </div>
+
+        <div class="detail-row">
+            <div class="detail-icon"><i class="bi bi-telephone"></i></div>
+            <div>
+                <div class="detail-label">Phone Number</div>
+                <div class="detail-value" th:text="${phone}">—</div>
+            </div>
+        </div>
+
+        <!-- Email confirmation note -->
+        <div class="email-sent-box">
+            <i class="bi bi-envelope-check text-primary" style="font-size:1.5rem;"></i>
+            <div class="mt-2 small fw-semibold text-primary">Confirmation Email Sent!</div>
+            <div class="small text-muted mt-1">
+                A registration success message has been sent to<br>
+                <strong th:text="${email}">your email</strong>
+            </div>
+        </div>
+
+        <a th:href="@{/register}" class="btn btn-back w-100">
+            <i class="bi bi-arrow-left me-2"></i>Register Another
+        </a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
